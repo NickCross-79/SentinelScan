@@ -1,0 +1,26 @@
+# Run SentinelScan locally with one command:  docker compose -f docker/docker-compose.yml up --build
+#
+# NOTE: container-based scanning only sees the container's network namespace.
+# For scanning your LAN, prefer the native install (see README) or add
+# `network_mode: host` (Linux only) below.
+services:
+  sentinelscan:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    image: sentinelscan:local
+    ports:
+      - "8787:8787"
+    volumes:
+      - sentinel-data:/data
+    environment:
+      SENTINEL_HOST: 0.0.0.0
+      SENTINEL_PORT: "8787"
+      SENTINEL_DATA_DIR: /data
+      # Allow the browser origin you use to reach the app.
+      # (Origins are also configurable via SENTINEL_ALLOWED_ORIGINS.)
+    restart: unless-stopped
+    # network_mode: host   # uncomment on Linux to scan the host LAN
+
+volumes:
+  sentinel-data:

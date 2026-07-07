@@ -1,0 +1,1 @@
+{"root":["./src/main.tsx","./src/api/client.ts","./src/components/Layout.tsx","./src/components/ui.tsx","./src/lib/scanContext.tsx","./src/lib/types.ts","./src/pages/Dashboard.tsx","./src/pages/Devices.tsx","./src/pages/Reports.tsx","./src/pages/Scan.tsx","./src/pages/Vulnerabilities.tsx"],"version":"5.9.3"}
