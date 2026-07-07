@@ -1,0 +1,84 @@
+{
+  "_meta": {
+    "source": "Curated offline seed (NVD-derived). Replace/extend via the NVD/OSV sync pipeline described in docs/DEVELOPMENT_PLAN.md §7.",
+    "generated": "2024-01-01",
+    "note": "cvss_v3 and ranges reflect published NVD data at seed time."
+  },
+  "cves": [
+    {
+      "id": "CVE-2021-41773",
+      "description": "Path traversal and file disclosure in Apache HTTP Server 2.4.49 due to a flaw in path normalization. Can expose files outside the document root; with mod_cgi enabled it can lead to remote code execution.",
+      "cvss_v3": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+      "severity": "high",
+      "cwe": "CWE-22",
+      "published": "2021-10-05",
+      "references": ["https://nvd.nist.gov/vuln/detail/CVE-2021-41773", "https://httpd.apache.org/security/vulnerabilities_24.html"],
+      "matches": [
+        {"cpe": "cpe:2.3:a:apache:http_server", "version_start": "2.4.49", "version_start_incl": true, "version_end": "2.4.49", "version_end_incl": true}
+      ],
+      "fixed_version": "2.4.51",
+      "recommendation": "Upgrade Apache HTTP Server to 2.4.51 or later. Ensure 'Require all denied' is set for filesystem locations outside the document root."
+    },
+    {
+      "id": "CVE-2021-42013",
+      "description": "Remote code execution / path traversal in Apache HTTP Server 2.4.49 and 2.4.50. The fix for CVE-2021-41773 was incomplete; crafted requests can map URLs to files outside the document root and, with CGI enabled, execute code.",
+      "cvss_v3": 9.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "critical",
+      "cwe": "CWE-22",
+      "published": "2021-10-07",
+      "references": ["https://nvd.nist.gov/vuln/detail/CVE-2021-42013"],
+      "matches": [
+        {"cpe": "cpe:2.3:a:apache:http_server", "version_start": "2.4.49", "version_start_incl": true, "version_end": "2.4.50", "version_end_incl": true}
+      ],
+      "fixed_version": "2.4.51",
+      "recommendation": "Upgrade Apache HTTP Server to 2.4.51 or later immediately. This is a remotely exploitable RCE."
+    },
+    {
+      "id": "CVE-2021-23017",
+      "description": "Off-by-one heap write in the nginx resolver when processing crafted DNS responses, potentially leading to worker process crash or code execution.",
+      "cvss_v3": 7.7,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H",
+      "severity": "high",
+      "cwe": "CWE-193",
+      "published": "2021-05-25",
+      "references": ["https://nvd.nist.gov/vuln/detail/CVE-2021-23017"],
+      "matches": [
+        {"cpe": "cpe:2.3:a:nginx:nginx", "version_start": "0.6.18", "version_start_incl": true, "version_end": "1.20.0", "version_end_incl": true}
+      ],
+      "fixed_version": "1.20.1",
+      "recommendation": "Upgrade nginx to 1.20.1 or later, or disable the 'resolver' directive if not required."
+    },
+    {
+      "id": "CVE-2018-15473",
+      "description": "OpenSSH allows username enumeration via a timing/response difference for authentication requests, aiding targeted brute-force attacks.",
+      "cvss_v3": 5.3,
+      "cvss_vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+      "severity": "medium",
+      "cwe": "CWE-200",
+      "published": "2018-08-17",
+      "references": ["https://nvd.nist.gov/vuln/detail/CVE-2018-15473"],
+      "matches": [
+        {"cpe": "cpe:2.3:a:openbsd:openssh", "version_start": null, "version_start_incl": false, "version_end": "7.7", "version_end_incl": false}
+      ],
+      "fixed_version": "7.7",
+      "recommendation": "Upgrade OpenSSH to 7.7 or later. Restrict SSH exposure with a firewall and key-based authentication."
+    },
+    {
+      "id": "CVE-2011-2523",
+      "description": "vsftpd 2.3.4 shipped with a backdoor that opens a root shell on TCP/6200 when a username containing ':)' is supplied.",
+      "cvss_v3": 9.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "critical",
+      "cwe": "CWE-506",
+      "published": "2011-07-04",
+      "references": ["https://nvd.nist.gov/vuln/detail/CVE-2011-2523"],
+      "matches": [
+        {"cpe": "cpe:2.3:a:vsftpd:vsftpd", "version_start": "2.3.4", "version_start_incl": true, "version_end": "2.3.4", "version_end_incl": true}
+      ],
+      "fixed_version": "2.3.5",
+      "recommendation": "Remove the compromised vsftpd 2.3.4 build immediately and install a clean package from a trusted repository."
+    }
+  ]
+}
